@@ -40,3 +40,5 @@ class EmpresaCreateView(CreateView):
     model=Empresa
     fields=['nombre']
     success_url="/listEmpresa" 
+
+
