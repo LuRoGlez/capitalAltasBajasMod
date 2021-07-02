@@ -4,15 +4,14 @@ from django.db import models
 # Create your models here.
 
 class Empresa (models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=50, unique=True)
 
 
     def __str__(self):
         return self.nombre
 
 class Empleado (models.Model):
-    nombre = models.CharField(max_length=50)
-    apellidos = models.CharField(max_length=70)
+    nombre = models.CharField(max_length=100)
     empresa=models.ForeignKey(Empresa, verbose_name="Empresa", on_delete=models.CASCADE, related_name='empresa')
 
     class Vencimientos(models.TextChoices):
@@ -34,9 +33,9 @@ class Empleado (models.Model):
         LLAMAMIENTO = 'LLAMAMIENTO'
         BAJA_Y_ALTA = 'BAJA Y ALTA' 
    
-    tipo_vencimiento = models.CharField(max_length=25, choices=Vencimientos.choices, default='ALTA')
-    fechaBaja=models.DateField(null=True)
-    fechaAlta= models.DateField(null=True)
+    tipo_vencimiento = models.CharField(max_length=25, choices=Vencimientos.choices, blank=True)
+    fechaBaja=models.DateField(null=True, blank = True)
+    fechaAlta= models.DateField(null=True, blank = True)
     segSocial=models.BooleanField(default=False)
     sepe=models.BooleanField(default=False)
     enviadoContrato=models.BooleanField(default=False)
@@ -53,7 +52,7 @@ class Empleado (models.Model):
     asesor=models.CharField(max_length=25, choices=Asesores.choices, null=True, default="")
 
     def __str__(self):
-        return " Empleado: "+self.nombre+" "+self.apellidos+" Empresa: "+self.empresa.nombre+" Tipo Vencimiento: "+self.tipo_vencimiento
+        return " Empleado: "+self.nombre+" Empresa: "+self.empresa.nombre+" Tipo Vencimiento: "+self.tipo_vencimiento
 
 
 

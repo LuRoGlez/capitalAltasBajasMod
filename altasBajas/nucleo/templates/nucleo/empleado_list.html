@@ -20,8 +20,7 @@
 
     <table class="table table-striped">
         <tr>
-         <th>Nombre</th>
-         <th>Apellidos</th>
+         <th>Empleado</th>
          <th>Empresa</th>
          <th>Tipo Vencimiento</th>
          <th>Fecha Baja</th>
@@ -53,12 +52,11 @@
          {% ifequal e.asesor 'Sara' %}
          <tr style="background-color:#FED8E4">
          {% endifequal %}
-         <td>{{e.nombre}}</td>
-         <td>{{e.apellidos}}</td>
-         <td>{{e.empresa}}</td>
+         <td style="font-size:12px">{{e.nombre}}</td>
+         <td style="font-size:12px">{{e.empresa}}</td>
          <td>{{e.tipo_vencimiento}}</td>
-         <td>{{e.fechaBaja}}</td>
-         <td>{{e.fechaAlta}}</td>
+         <td style="font-size:12px">{{e.fechaBaja}}</td>
+         <td style="font-size:12px">{{e.fechaAlta}}</td>
          {% if e.segSocial %}
          <td style="text-align:center; background-color:#A6FFA0">Hecho</td>
          {% else %}

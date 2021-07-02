@@ -3,7 +3,6 @@ from django.shortcuts import render
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-from .forms import FormularioCrearEmpleado
 from django import forms
 
 # Create your views here.
@@ -16,20 +15,14 @@ class EmpleadoListView(ListView):
 
 class EmpleadoCreateView(CreateView):
     model=Empleado
-    fields=['nombre', 'apellidos', 'empresa', 'tipo_vencimiento', 'fechaAlta', 'fechaBaja', 'asesor']
-    widgets = {
-            'fechaAlta': forms.SelectDateWidget(),
-            'fechaBaja': forms.SelectDateWidget()
-        } 
+    fields=['nombre','empresa', 'tipo_vencimiento', 'fechaAlta', 'fechaBaja', 'asesor']
+   
     success_url="/listEmpleado" 
 
 class EmpleadoUpdateView(UpdateView):
     model=Empleado
-    fields=['nombre', 'apellidos', 'empresa', 'tipo_vencimiento', 'fechaAlta', 'fechaBaja', 'asesor', 'segSocial', 'sepe', 'enviadoContrato', 'sage', 'certificadoEmpresa', 'envioLiquidacion', 'firmaFY']
-    widgets = {
-            'fechaAlta': forms.SelectDateWidget(),
-            'fechaBaja': forms.SelectDateWidget()
-        } 
+    fields=['nombre', 'empresa', 'tipo_vencimiento', 'fechaAlta', 'fechaBaja', 'asesor', 'segSocial', 'sepe', 'enviadoContrato', 'sage', 'certificadoEmpresa', 'envioLiquidacion', 'firmaFY']
+    
     success_url="/listEmpleado"
 
 class EmpleadoDeleteView(DeleteView):
@@ -39,6 +32,6 @@ class EmpleadoDeleteView(DeleteView):
 class EmpresaCreateView(CreateView):
     model=Empresa
     fields=['nombre']
-    success_url="/listEmpresa" 
+    success_url="/listEmpleado" 
 
 
