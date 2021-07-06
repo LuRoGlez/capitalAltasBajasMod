@@ -10,13 +10,30 @@
         <a href="{% url 'createEmpresa'  %}" style="color:white"><button style="background-color:orange">Añadir Empresa</a>
         
     </article>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 search">
+                <form method="get">
+                    <div id="custom-search-input">
+                        <div class="input-group col-md-12">
+                            <input type="text" class="form-control" placeholder="Buscar" name="buscar">
+                            <span clas="input-group-list">
+                            <i class="icon icon-search"></i>
+                            <button type="submit" class="boton btn-success">Buscar</button>
+                            </span>
+                        </div>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <article>
         <a href="{% url 'createEmpleado'  %}" style="color:white"><button style="background-color:#82ADD2">Añadir Empleado</a>
     </article>
     </section>
 <h2>Empleados</h2>
 
-{% if empleado_list %}
+{% if empleados %}
 
     <table class="table table-striped">
         <tr>
@@ -36,20 +53,20 @@
         
 
 
-    {% for e in empleado_list %}
-        {% ifequal e.asesor 'Elena'  %}
+    {% for e in empleados %}
+        {% ifequal e.empresa.asesor 'Elena'  %}
          <tr style="background-color:#BFF882">
          {% endifequal %}
-         {% ifequal e.asesor 'Carmen' %}
+         {% ifequal e.empresa.asesor 'Carmen' %}
          <tr style="background-color:#D5C2FD">
          {% endifequal %}
-         {%  ifequal e.asesor 'Maria' %}
+         {%  ifequal e.empresa.asesor 'Maria' %}
          <tr style="background-color:#FDE7C2">
          {% endifequal %}
-         {% ifequal e.asesor 'JoseLuis' %}
+         {% ifequal e.empresa.asesor 'JoseLuis' %}
          <tr style="background-color:#B3E5FB;">
          {% endifequal %}
-         {% ifequal e.asesor 'Sara' %}
+         {% ifequal e.empresa.asesor 'Sara' %}
          <tr style="background-color:#FED8E4">
          {% endifequal %}
          <td style="font-size:12px">{{e.nombre}}</td>

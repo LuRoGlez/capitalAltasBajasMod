@@ -5,7 +5,13 @@ from django.db import models
 
 class Empresa (models.Model):
     nombre = models.CharField(max_length=50, unique=True)
-
+    class Asesores(models.TextChoices):
+        Elena = 'Elena'
+        JoseLuis = 'JoseLuis'
+        Carmen = 'Carmen'
+        Maria = 'Maria'
+        Sara = 'Sara'
+    asesor=models.CharField(max_length=25, choices=Asesores.choices, null=True, default="")
 
     def __str__(self):
         return self.nombre
@@ -43,13 +49,10 @@ class Empleado (models.Model):
     certificadoEmpresa=models.BooleanField(default=False)
     envioLiquidacion=models.BooleanField(default=False)
     firmaFY=models.BooleanField(default=False)
-    class Asesores(models.TextChoices):
-        Elena = 'Elena'
-        JoseLuis = 'JoseLuis'
-        Carmen = 'Carmen'
-        Maria = 'Maria'
-        Sara = 'Sara'
-    asesor=models.CharField(max_length=25, choices=Asesores.choices, null=True, default="")
+
+    class Meta:
+        ordering = ['fechaBaja']
+    
 
     def __str__(self):
         return " Empleado: "+self.nombre+" Empresa: "+self.empresa.nombre+" Tipo Vencimiento: "+self.tipo_vencimiento
