@@ -13,6 +13,7 @@ urlpatterns = [
     path('createEmpresa',views.EmpresaCreateView.as_view(), name="createEmpresa"),
     path('updateEmpresa/<int:pk>',views.EmpresaUpdateView.as_view(), name="updateEmpresa"),
     path('listEmpresa',views.EmpresaListView.as_view(), name="listEmpresa"),
+    path('empleados',views.Empleados, name="empleados"),
 
    
 ]

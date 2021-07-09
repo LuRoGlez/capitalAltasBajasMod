@@ -28,7 +28,7 @@ class EmpleadoResource(resources.ModelResource):
         
 class EmpleadoAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     search_fields = ['nombre']
-    list_display = ('nombre', 'empresa', 'tipo_vencimiento', 'fechaBaja', 'fechaAlta')    
+    list_display = ('nombre', 'empresa', 'tipo_vencimiento', 'fecha')    
     resource_class = EmpleadoResource
 
 admin.site.register(Empresa, EmpresaAdmin)

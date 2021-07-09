@@ -13,6 +13,9 @@ class Empresa (models.Model):
         Sara = 'Sara'
     asesor=models.CharField(max_length=25, choices=Asesores.choices, null=True, default="")
 
+    class Meta:
+        ordering = ['nombre']
+
     def __str__(self):
         return self.nombre
 
@@ -39,9 +42,8 @@ class Empleado (models.Model):
         LLAMAMIENTO = 'LLAMAMIENTO'
         BAJA_Y_ALTA = 'BAJA Y ALTA' 
    
-    tipo_vencimiento = models.CharField(max_length=25, choices=Vencimientos.choices, blank=True)
-    fechaBaja=models.DateField(null=True, blank = True)
-    fechaAlta= models.DateField(null=True, blank = True)
+    tipo_vencimiento = models.CharField(max_length=25, choices=Vencimientos.choices, blank=True, default='BAJA')
+    fecha=models.DateField(null=True, blank = True)
     segSocial=models.BooleanField(default=False)
     sepe=models.BooleanField(default=False)
     enviadoContrato=models.BooleanField(default=False)
@@ -49,9 +51,11 @@ class Empleado (models.Model):
     certificadoEmpresa=models.BooleanField(default=False)
     envioLiquidacion=models.BooleanField(default=False)
     firmaFY=models.BooleanField(default=False)
+    fin=models.BooleanField(default=False)
+    oculto=models.BooleanField(default=False)
 
     class Meta:
-        ordering = ['fechaBaja']
+        ordering = ['fecha']
     
 
     def __str__(self):
